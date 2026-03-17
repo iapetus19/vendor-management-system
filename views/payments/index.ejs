@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>VMS</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+<%- include('../partials/navbar') %>
+
+<h1>Payments</h1>
+
+<a href="/payments/new">Add Payment</a>
+
+<table border="1" cellpadding="10">
+    <tr>
+        <th>ID</th>
+        <th>Order</th>
+        <th>Vendor</th>
+        <th>Amount</th>
+        <th>Date</th>
+        <th>Status</th>
+    </tr>
+
+    <% payments.forEach(p => { %>
+        <tr>
+            <td><%= p.payment_id %></td>
+            <td><%= p.order_id %></td>
+            <td><%= p.vendor_name %></td>
+            <td>₹<%= p.amount %></td>
+            <td><%= p.payment_date %></td>
+            <td><%= p.status %></td>
+        </tr>
+    <% }) %>
+</table>
+
+<%- include('../partials/footer') %>
+
+</body>
+</html>

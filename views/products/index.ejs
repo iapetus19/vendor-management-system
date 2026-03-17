@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>VMS</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+<%- include('../partials/navbar') %>
+
+<h1>All Products</h1>
+
+<a href="/products/new">Add Product</a>
+
+<table border="1" cellpadding="10">
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Stock</th>
+        <th>Vendor</th>
+    </tr>
+
+    <% products.forEach(p => { %>
+        <tr>
+            <td><%= p.product_id %></td>
+            <td><%= p.product_name %></td>
+            <td><%= p.price %></td>
+            <td><%= p.stock %></td>
+            <td><%= p.vendor_name %></td>
+        </tr>
+    <% }) %>
+</table>
+
+<%- include('../partials/footer') %>
+
+</body>
+</html>

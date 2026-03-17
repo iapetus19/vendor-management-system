@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Vendors</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+<%- include('../partials/navbar') %>
+
+<div class="container">
+    <h1>Vendors</h1>
+
+    <a href="/vendors/new" class="btn">Add Vendor</a>
+
+    <% if (vendors.length === 0) { %>
+        <p>No vendors found.</p>
+    <% } else { %>
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Contact</th>
+                <th>Email</th>
+                <th>Action</th>
+            </tr>
+
+            <% vendors.forEach(v => { %>
+                <tr>
+                    <td><%= v.vendor_id %></td>
+                    <td><%= v.name %></td>
+                    <td><%= v.contact %></td>
+                    <td><%= v.email %></td>
+                    <td>
+                        <form action="/vendors/<%= v.vendor_id %>?_method=DELETE" method="POST">
+                            <button>Delete</button>
+                        </form>
+                    </td>
+                </tr>
+            <% }) %>
+        </table>
+    <% } %>
+</div>
+
+<%- include('../partials/footer') %>
+
+</body>
+</html>

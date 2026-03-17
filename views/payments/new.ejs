@@ -1,0 +1,25 @@
+<h1>Add Payment</h1>
+
+<form action="/payments" method="POST">
+
+    <label>Select Order:</label><br>
+    <select name="order_id" required>
+        <% orders.forEach(o => { %>
+            <option value="<%= o.order_id %>">
+                Order #<%= o.order_id %> - <%= o.vendor_name %>
+            </option>
+        <% }) %>
+    </select><br><br>
+
+    <input type="number" name="amount" placeholder="Amount" required><br><br>
+
+    <label>Payment Method:</label><br>
+    <select name="payment_method">
+        <option>Cash</option>
+        <option>UPI</option>
+        <option>Card</option>
+    </select><br><br>
+
+    <button type="submit">Submit Payment</button>
+
+</form>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>VMS</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+<%- include('../partials/navbar') %>
+
+<h1>All Orders</h1>
+
+<a href="/orders/new">Create Order</a>
+
+<table border="1" cellpadding="10">
+    <tr>
+        <th>ID</th>
+        <th>Vendor</th>
+        <th>Date</th>
+        <th>Status</th>
+    </tr>
+
+    <% orders.forEach(o => { %>
+        <tr>
+            <td><%= o.order_id %></td>
+            <td><%= o.vendor_name %></td>
+            <td><%= o.order_date %></td>
+            <td><%= o.status %></td>
+        </tr>
+    <% }) %>
+</table>
+
+<%- include('../partials/footer') %>
+
+</body>
+</html>

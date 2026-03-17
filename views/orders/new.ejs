@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Create Order</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+
+<%- include('../partials/navbar') %>
+
+<div class="container">
+
+    <h1>Create Order</h1>
+
+    <form action="/orders" method="POST">
+
+        <!-- Vendor Selection -->
+        <label>Select Vendor:</label>
+        <select name="vendor_id" required>
+            <% vendors.forEach(v => { %>
+                <option value="<%= v.vendor_id %>"><%= v.name %></option>
+            <% }) %>
+        </select>
+
+        <h3 style="margin-top:20px;">Select Products:</h3>
+
+        <!-- Products List -->
+        <% products.forEach(p => { %>
+            <div style="margin-bottom:15px; padding:10px; border:1px solid #ddd; border-radius:8px;">
+
+                <label>
+                    <input 
+                        type="checkbox" 
+                        name="products[]" 
+                        value="<%= p.product_id %>"
+                    >
+                    <strong><%= p.product_name %></strong> (₹<%= p.price %>)
+                </label>
+
+                <br><br>
+
+                Quantity:
+                <input 
+                    type="number" 
+                    name="quantity_<%= p.product_id %>" 
+                    min="1" 
+                    value="1"
+                >
+
+            </div>
+        <% }) %>
+
+        <button type="submit" class="btn">Create Order</button>
+
+    </form>
+
+</div>
+
+<%- include('../partials/footer') %>
+
+</body>
+</html>
